@@ -1,33 +1,57 @@
 /*
  *     FRAMEWORK
  */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 /*
  *     COMPONENTS
  */
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import { APP_COLORS } from "@/utils/colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
 /*
  *     HOOKS
  */
 import { useCurrentBgColor } from "@/hooks/useCurrentBgColor";
-
-import Ionicons from "@expo/vector-icons/Ionicons";
+/*
+ *     UTILS
+ */
+import { gerRGBfromColor, rgbToHex, isHexColor } from "@/utils";
 
 export const HomeHeader: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const { colorName } = useCurrentBgColor();
+  const [displayedColorName, setDisplayedColorName] =
+    useState<string>(colorName);
+
+  useEffect(() => {
+    setDisplayedColorName(colorName);
+  }, [colorName]);
 
   const handleSaveColor = async () => {
-    await Clipboard.setStringAsync(colorName);
+    await Clipboard.setStringAsync(displayedColorName);
     setCopied(true);
     setTimeout(() => setCopied(false), 500);
   };
 
+  const handleColorNameChanging = () => {
+    if (isHexColor(displayedColorName)) {
+      setDisplayedColorName(colorName);
+    } else {
+      const rgb = gerRGBfromColor(colorName);
+      const hex = rgbToHex(rgb);
+      setDisplayedColorName(hex);
+    }
+  };
+
   return (
     <View style={styles.header}>
-      <Text style={styles.headerText}>{colorName}</Text>
+      <TouchableOpacity
+        onPress={handleColorNameChanging}
+        style={styles.headerTextContainer}
+      >
+        <Text style={styles.headerText}>{displayedColorName}</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={handleSaveColor}>
         {copied ? (
           <Ionicons
@@ -48,9 +72,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-    padding: 20,
+    paddingHorizontal: 20,
     backgroundColor: APP_COLORS.background,
     alignItems: "center",
+  },
+  headerTextContainer: {
+    flex: 1,
+    paddingVertical: 16,
   },
   headerText: {
     fontSize: 20,

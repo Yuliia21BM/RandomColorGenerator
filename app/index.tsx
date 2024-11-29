@@ -10,6 +10,9 @@ import { StatusBar } from "expo-status-bar";
 import { HomeColoredContent } from "./components/HomeColoredContent";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+/*
+ *     UTILS
+ */
 import { APP_COLORS } from "@/utils/colors";
 
 SplashScreen.preventAutoHideAsync();

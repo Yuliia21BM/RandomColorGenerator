@@ -16,7 +16,11 @@ import { HomeHeader } from "./HomeHeader";
  *     HOOKS
  */
 import { useCurrentBgColor } from "@/hooks/useCurrentBgColor";
+/*
+ *     UTILS
+ */
 import { APP_COLORS } from "@/utils/colors";
+import { gerRGBfromColor } from "@/utils";
 
 export const HomeColoredContent: React.FC = () => {
   const { setColorName } = useCurrentBgColor();
@@ -27,10 +31,7 @@ export const HomeColoredContent: React.FC = () => {
     const randomRGB = () => Math.floor(Math.random() * 256);
     const newColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 
-    const [r, g, b] = newColor
-      .replace(/[^\d,]/g, "")
-      .split(",")
-      .map(Number);
+    const [r, g, b] = gerRGBfromColor(newColor);
 
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 

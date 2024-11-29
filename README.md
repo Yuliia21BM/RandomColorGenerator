@@ -11,7 +11,8 @@
 ### App Screens
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; flex-direction: row;">
-    <img src="./assets/images/readme/screen1.png" alt="List Light Screen" width="200" />
-    <img src="./assets/images/readme/screen3.png" alt="List Dark Screen" width="200" />
-    <img src="./assets/images/readme/screen2.png" alt="List Dark Screen" width="200" />
+    <img src="./assets/images/readme/screen1.png" alt="Screen with white text" width="200" />
+    <img src="./assets/images/readme/screen3.png" alt="Screen with black text" width="200" />
+    <img src="./assets/images/readme/screen2.png" alt="Screen with RGB color name" width="200" />
+    <img src="./assets/images/readme/screen4.png" alt="Screen with HEX color name" width="200" />
 </div>
