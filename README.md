@@ -1,4 +1,4 @@
-# Test Task - React Native App
+# Random Color Generator - React Native App
 
 ## Features
 
