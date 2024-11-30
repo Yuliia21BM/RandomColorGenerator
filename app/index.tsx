@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
  */
 import { Platform, SafeAreaView, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { HomeColoredContent } from "./components/HomeColoredContent";
+import HomeColoredContent from "./components/HomeColoredContent";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 /*

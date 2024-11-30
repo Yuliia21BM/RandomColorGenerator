@@ -18,7 +18,7 @@ import { useCurrentBgColor } from "@/hooks/useCurrentBgColor";
  */
 import { gerRGBfromColor, rgbToHex, isHexColor } from "@/utils";
 
-export const HomeHeader: React.FC = () => {
+const HomeHeader: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const { colorName } = useCurrentBgColor();
   const [displayedColorName, setDisplayedColorName] =
@@ -85,3 +85,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export default HomeHeader;
